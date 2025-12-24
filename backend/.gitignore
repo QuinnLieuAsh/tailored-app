@@ -1,1 +1,6 @@
 /target
+target/
+stdout
+stderr
+.env
+.DS_Store
