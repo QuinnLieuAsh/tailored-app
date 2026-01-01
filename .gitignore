@@ -1,0 +1,9 @@
+# Ignore all target folders everywhere
+**/target/
+
+
+.DS_Store
+backend/migrations/.diesel_lock
+
+
+.env

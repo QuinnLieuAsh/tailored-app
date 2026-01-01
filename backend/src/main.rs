@@ -6,6 +6,12 @@ use std::sync::{Arc, RwLock};
 
 mod defs;
 mod handlers;
+mod db;
+mod schema;
+mod models;
+
+#[macro_use]
+extern crate diesel;
 
 #[derive(Serialize)]
 #[derive(Debug)]
