@@ -72,7 +72,6 @@ fn create_app() -> Router {
     .route("/definitions", post(handlers::create_def))
     .route("/definitions/{id}", get(handlers::get_def_by_id))
     .route("/definitions/{id}", delete(handlers::remove_by_id))
-    .route("/definitions/{id}", patch(handlers::update_def))
     .route("/defintions/search/{term}", get(handlers::get_def_by_term))
     .with_state(state)
 }

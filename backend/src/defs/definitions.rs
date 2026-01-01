@@ -17,7 +17,7 @@ pub struct Definition {
     pub formal_def: String,
     pub useful_def: String,
     pub simple_def: String,
-    pub date_created: chrono::DateTime<chrono::Utc>
+    // pub date_created: chrono::DateTime<chrono::Utc> // TODO: Maybe remove the time
 }
 
 impl Definition {
@@ -30,7 +30,7 @@ impl Definition {
             formal_def : "".to_string(),
             useful_def: def.to_string(),
             simple_def: "".to_string(),
-            date_created: Utc::now()
+            // date_created: Utc::now()
         }
     }
 }

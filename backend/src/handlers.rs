@@ -10,11 +10,6 @@ pub struct CreateArguments {
     meaning: String
 }
 
-#[derive(serde::Deserialize)]
-pub struct UpdateArguments {
-    meaning: String
-}
-
 pub async fn list_defs(
     State(def_repo): State<Arc<RwLock<DefinitionManager>>>
 ) -> Json<Vec<Definition>> {
@@ -79,18 +74,5 @@ pub async fn create_def(
     let def = defs_lock.create(&term, &useful_def);
 
     Json(def)
-}
-
-pub async fn update_def(
-    State(def_repo): State<Arc<RwLock<DefinitionManager>>>,
-    Path(id): Path<String>, Json(new_def):Json<UpdateArguments>) -> Result<Json<Definition>, ApiError> {
-    let mut defs_lock= def_repo.write().expect("Failed to lock repo for read");
-    
-    let meaning = new_def.meaning;
-
-    let def = defs_lock.update_def(&id, &meaning)
-    .map_err(|_error| {ApiError::NotFound})?;
-
-       Ok(Json(def)) 
 }
 

@@ -30,10 +30,6 @@ pub trait DefinitionRepository {
     //EFFECTS: Returns a Definition with term matching the argument
     fn get_by_term(&self, term: &str) -> Option<Definition>;
 
-    //REQUIRES: Term to be existing in DB
-    //MODIFIES:
-    //EFFECTS: Returns a Definition with term matching the argument
-    fn update_def(&mut self, id: &str, definition: &str) -> Result<Definition, String>;
 }
 
 
@@ -77,17 +73,5 @@ impl DefinitionRepository for DefinitionManager {
         
     }
     
-    fn update_def(&mut self, id: &str, new_meaning: &str) -> Result<Definition, String> {
-        let definition = self.def_map.get_mut(id);
-        match definition {
-            Some(def) => {
-                def.useful_def = new_meaning.to_string();
-                Ok(def.clone())
-            }
-            None => {
-                Err("Definition was not found".to_string())
-            }
-        }
-    }
 }
 
